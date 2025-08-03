@@ -12,7 +12,7 @@ overrides:
   debug: 4.4.1
   express: 5.1.0
   got: 14.4.7
-  marked: 16.0.0
+  marked: 16.1.1
   nanoid: 5.1.5
   postcss: 8.5.6
   semver: 7.7.2
@@ -9345,8 +9345,8 @@ packages:
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
 
-  marked@16.0.0:
-    resolution: {integrity: sha512-MUKMXDjsD/eptB7GPzxo4xcnLS6oo7/RHimUMHEDRhUooPwmN9BEpMl7AEOJv3bmso169wHI2wUF9VQgL7zfmA==}
+  marked@16.1.1:
+    resolution: {integrity: sha512-ij/2lXfCRT71L6u0M29tJPhP0bM5shLL3u5BePhFwPELj2blMJ6GDtD7PfJhRLhJ/c2UwrK17ySVcDzy2YHjHQ==}
     engines: {node: '>= 20'}
     hasBin: true
 
@@ -20451,12 +20451,12 @@ snapshots:
   '@webpack-cli/configtest@3.0.1(webpack-cli@6.0.1)(webpack@5.99.9)':
     dependencies:
       webpack: 5.99.9(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.99.9)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.99.9)
 
   '@webpack-cli/generators@3.0.7(encoding@0.1.13)(mem-fs@2.3.0)(prettier@3.6.2)(webpack-cli@6.0.1)(webpack@5.99.9)':
     dependencies:
       webpack: 5.99.9(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.99.9)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.99.9)
       yeoman-environment: 3.19.3
       yeoman-generator: 5.10.0(encoding@0.1.13)(mem-fs@2.3.0)(yeoman-environment@3.19.3)
     optionalDependencies:
@@ -20470,7 +20470,7 @@ snapshots:
   '@webpack-cli/info@3.0.1(webpack-cli@6.0.1)(webpack@5.99.9)':
     dependencies:
       webpack: 5.99.9(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.99.9)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.99.9)
 
   '@webpack-cli/serve@3.0.1(webpack-cli@6.0.1)(webpack-dev-server@5.2.2)(webpack@5.99.9)':
     dependencies:
@@ -22389,7 +22389,7 @@ snapshots:
 
   docsify@4.13.1:
     dependencies:
-      marked: 16.0.0
+      marked: 16.1.1
       medium-zoom: 1.1.0
       opencollective-postinstall: 2.0.3
       prismjs: 1.30.0
@@ -25415,7 +25415,7 @@ snapshots:
 
   markdown-table@3.0.4: {}
 
-  marked@16.0.0: {}
+  marked@16.1.1: {}
 
   math-intrinsics@1.1.0: {}
 
@@ -30691,7 +30691,7 @@ snapshots:
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     optionalDependencies:
-      webpack-cli: 6.0.1(webpack@5.99.9)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.99.9)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
