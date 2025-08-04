@@ -51,18 +51,18 @@
     "yaml": "2.8.0"
   },
   "devDependencies": {
-    "@eslint/js": "9.29.0",
+    "@eslint/js": "9.32.0",
     "@tailwindcss/vite": "4.1.11",
     "@types/web-bluetooth": "0.0.21",
-    "eslint": "9.29.0",
+    "eslint": "9.32.0",
     "globals": "16.3.0",
     "kill-port": "2.0.1",
     "prettier": "3.6.2",
     "rimraf": "6.0.1",
     "tailwindcss": "4.1.11",
-    "typescript": "5.8.3",
-    "typescript-eslint": "8.35.0",
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.38.0",
     "vite-plugin-solid": "2.11.8",
-    "vite-plugin-wasm": "3.4.1"
+    "vite-plugin-wasm": "3.5.0"
   }
 }
