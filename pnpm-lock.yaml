@@ -446,8 +446,8 @@ importers:
         specifier: 16.11.0
         version: 16.11.0
       html-to-pdfmake:
-        specifier: 2.5.28
-        version: 2.5.28
+        specifier: 2.5.30
+        version: 2.5.30
       jsdom:
         specifier: 26.1.0
         version: 26.1.0
@@ -8016,8 +8016,8 @@ packages:
   html-to-image@1.11.13:
     resolution: {integrity: sha512-cuOPoI7WApyhBElTTb9oqsawRvZ0rHhaHwghRLlTuffoD1B2aDemlCruLeZrUIIdvG7gs9xeELEPm6PhuASqrg==}
 
-  html-to-pdfmake@2.5.28:
-    resolution: {integrity: sha512-tYACSimx7C45dxqQOLr1sMQ/z37hQzoX3hSHG+RyluWT3z9NJCwMXqMREelfZN5bUA6K7dMotxIPuhxAJ2WJuA==}
+  html-to-pdfmake@2.5.30:
+    resolution: {integrity: sha512-h7SXvVt3lyPXpMp8wfUbs54rfgYUBlfdhDUn9IS0DtBYAxlTHMNRLC29p3weENw6DD84uXT8s6jBGMbadVl79A==}
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
@@ -23897,7 +23897,7 @@ snapshots:
 
   html-to-image@1.11.13: {}
 
-  html-to-pdfmake@2.5.28: {}
+  html-to-pdfmake@2.5.30: {}
 
   html-void-elements@3.0.0: {}
 
