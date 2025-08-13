@@ -36,7 +36,7 @@
     "@testing-library/react": "16.3.0",
     "@types/jest": "30.0.0",
     "@types/node": "22.17.1",
-    "@types/react": "19.1.9",
+    "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7",
     "@types/react-scroll": "1.8.10",
     "@types/react-stickynode": "4.0.3",
@@ -56,12 +56,12 @@
     "prettier-plugin-tailwindcss": "0.6.14",
     "prisma": "6.13.0",
     "rimraf": "6.0.1",
-    "sass": "1.89.2",
+    "sass": "1.90.0",
     "tailwindcss": "4.1.11",
     "ts-jest": "29.4.1",
     "ts-node": "10.9.2",
     "typescript": "5.9.2",
-    "typescript-eslint": "8.38.0"
+    "typescript-eslint": "8.39.1"
   },
   "keywords": [
     "gatsby"
