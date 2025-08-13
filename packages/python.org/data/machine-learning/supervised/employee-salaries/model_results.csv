@@ -1,5 +1,5 @@
 features,model,r2_score,mae
-"('experience_level', 'employment_type', 'employee_residence', 'remote_ratio', 'company_location', 'company_size')",XGB,0.5562972231588921,29041.500920222355
+"('experience_level', 'employment_type', 'employee_residence', ' ', 'company_location', 'company_size')",XGB,0.5562972231588921,29041.500920222355
 "('experience_level', 'employee_residence', 'remote_ratio', 'company_location', 'company_size')",XGB,0.5537958980898257,29227.136939415566
 "('experience_level', 'employment_type', 'remote_ratio', 'company_location', 'company_size')",XGB,0.5521686759535587,29204.960242638223
 "('experience_level', 'employee_residence', 'remote_ratio', 'company_size')",XGB,0.5518862811288425,29519.71432729868
