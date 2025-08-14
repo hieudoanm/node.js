@@ -53,7 +53,7 @@
     "pino": "9.8.0",
     "pino-pretty": "13.1.1",
     "public-ip": "7.0.1",
-    "puppeteer": "24.16.1",
+    "puppeteer": "24.16.2",
     "stockfish": "16.0.0"
   },
   "devDependencies": {
