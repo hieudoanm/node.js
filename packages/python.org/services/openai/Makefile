@@ -26,7 +26,7 @@ docker-stop:
 docker-clean:
 	docker rmi $(APP_NAME) || true
 
-run:
+dev:
 	uvicorn main:app --reload --port 8000
 
 install:
