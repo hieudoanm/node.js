@@ -25,6 +25,6 @@ export const startKafkaServer = async () => {
 
     logger.info(`🚀 Kafka Consumer is Running...`);
   } catch (error) {
-    logger.error('❌ Kafka Consumer Error:', error);
+    logger.error(`❌ Kafka Consumer Error=${error}`);
   }
 };

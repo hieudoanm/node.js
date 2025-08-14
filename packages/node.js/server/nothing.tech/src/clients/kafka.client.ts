@@ -4,15 +4,15 @@ import { logger } from '../utils/log';
 export const kafka = new Kafka({
   logCreator: () => {
     return ({ level, log }) => {
-      const { message, ...extra } = log;
+      const { message } = log;
       if (level === logLevel.ERROR) {
-        logger.error(message, extra);
+        logger.error(message);
       } else if (level === logLevel.DEBUG) {
-        logger.debug(message, extra);
+        logger.debug(message);
       } else if (level === logLevel.INFO) {
-        logger.info(message, extra);
+        logger.info(message);
       } else if (level === logLevel.WARN) {
-        logger.warn(message, extra);
+        logger.warn(message);
       }
     };
   },

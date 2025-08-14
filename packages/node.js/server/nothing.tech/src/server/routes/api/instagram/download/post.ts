@@ -14,14 +14,14 @@ export const postRoute = async (
   }
 ) => {
   const { data = {} } = await tryCatch(getRequestBody(request));
-  logger.info('data', data);
+  logger.info(data);
   const { url = '' } = data as { url: string };
   const { data: imagesData, error: imagesError } = await tryCatch(
     getImages(url)
   );
   if (imagesError) logger.error(imagesError.message);
   const { images: imageUrls = [] } = imagesData ?? { images: [] };
-  logger.info('image.urls', imageUrls);
+  logger.info(imageUrls);
   const images = [];
   for (const imageUrl of imageUrls) {
     const { data: image, error: imageError } = await tryCatch(
@@ -30,7 +30,7 @@ export const postRoute = async (
     if (imageError) logger.error(imageError.message);
     if (image) images.push(image);
   }
-  logger.info('images', images);
+  logger.info(images);
   response.writeHead(200, { 'Content-Type': 'application/json' });
   response.end(JSON.stringify({ error: null, images }));
 };

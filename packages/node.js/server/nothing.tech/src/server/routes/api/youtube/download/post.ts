@@ -71,8 +71,8 @@ export const postRoute = async (
     logger.info(`✅ Download ${humanFileSize(totalSize)} complete!`);
   });
 
-  fileStream.on('error', (err) => {
-    logger.error('❌ File streaming error:', err);
+  fileStream.on('error', (error) => {
+    logger.error(`❌ File streaming error=${error}`);
     response.writeHead(500, { 'Content-Type': 'text/plain' });
     response.end('Error streaming video');
   });

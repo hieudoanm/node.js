@@ -19,18 +19,18 @@ export const getImages = async (
   logger.info('browser.newPage');
   const [url] = instagramURL.split('?');
   const embedURL: string = url.at(-1) === '/' ? `${url}embed` : `${url}/embed`;
-  logger.info('embedURL', embedURL);
+  logger.info(`embedURL=${embedURL}`);
   await page.goto(embedURL, { waitUntil: 'networkidle2', timeout: 60000 });
   logger.info('page.goto');
   // Check Next Button
   let buttonExists: boolean =
     (await page.$('button[aria-label="Next"]')) !== null;
-  logger.info('button.exists', buttonExists);
+  logger.info(buttonExists);
   while (buttonExists) {
     await page.waitForSelector('[aria-label="Next"]', { visible: true });
     await page.click('[aria-label="Next"]');
     buttonExists = (await page.$('button[aria-label="Next"]')) !== null;
-    logger.info('button.exists', buttonExists);
+    logger.info(buttonExists);
   }
   logger.info('button.exists.complete');
   // Get all Images
@@ -43,7 +43,7 @@ export const getImages = async (
     }
     return images;
   });
-  logger.info('images', images);
+  logger.info(images);
   await browser.close();
   return { images };
 };
@@ -57,7 +57,7 @@ export const imageUrlToBase64 = async (imageUrl: string) => {
     const base64: string = Buffer.from(buffer).toString('base64');
     return `data:${contentType};base64,${base64}`;
   } catch (error) {
-    logger.error('Error converting image:', error);
+    logger.error(`Error converting image error=${error}`);
     return null;
   }
 };

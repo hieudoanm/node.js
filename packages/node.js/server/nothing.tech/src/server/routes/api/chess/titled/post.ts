@@ -12,7 +12,7 @@ export const postRoute = async (
   const { url = '' } = request;
   const [path, queryString] = url.split('?');
   const query = new URLSearchParams(queryString);
-  logger.info(url, path, query);
+  logger.info({ url, path, query });
   const titleMap = query.get('titleMap')?.toLowerCase() ?? 'all';
   const title = query.get('title')?.toUpperCase() ?? '';
   const { data } = await tryCatch(producePlayerMessage({ title, titleMap }));

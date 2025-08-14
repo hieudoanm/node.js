@@ -17,7 +17,7 @@ export const postRoute = async (
     logger.info(request, 'request');
 
     const filePath: string = path.join(CWD, 'uploads', 'image.png');
-    logger.info('filePath', filePath);
+    logger.info(`filePath=${filePath}`);
     const writeStream = createWriteStream(filePath);
     request.pipe(writeStream);
 

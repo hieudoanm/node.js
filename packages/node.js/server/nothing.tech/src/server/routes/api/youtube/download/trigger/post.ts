@@ -27,7 +27,8 @@ export const postRoute = async (
   if (!exists) {
     logger.info('⏳ Download from YouTube started');
     const { data } = await tryCatch(download(urlString));
-    logger.info('✅ Download from YouTube completed', data);
+    logger.info('✅ Download from YouTube completed');
+    logger.info(data);
   }
 
   response.writeHead(200, { 'Content-Type': 'application/json' });

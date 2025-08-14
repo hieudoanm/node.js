@@ -11,7 +11,7 @@ export const getRoute = async (
   const { url = '' } = request;
   const [path, queryString] = url.split('?');
   const query = new URLSearchParams(queryString);
-  logger.info(url, path, query);
+  logger.info({ url, path, query });
   const title: string = query.get('title') ?? '';
   const players = await prismaClient.player.findMany({
     select: {

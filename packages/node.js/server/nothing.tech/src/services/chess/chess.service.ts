@@ -9,8 +9,7 @@ export const addPlayer = async (player: string) => {
   );
   if (playerError) {
     logger.error(
-      `❌ Error fetching player=${player} data:`,
-      playerError.message
+      `❌ Error fetching player=${player} data error=${playerError.message}`
     );
     return;
   }
@@ -38,8 +37,7 @@ export const addPlayer = async (player: string) => {
   );
   if (statsError) {
     logger.error(
-      `❌ Error fetching player=${player} stats:`,
-      statsError.message
+      `❌ Error fetching player=${player} stats error=${statsError.message}`
     );
     return;
   }
@@ -149,7 +147,7 @@ export const addPlayer = async (player: string) => {
     })
   );
   if (error) {
-    logger.error(`❌ Error upsert player=${player} error:`, error.message);
+    logger.error(`❌ Error upsert player=${player} error=${error.message}`);
   }
   logger.info(`✅ Upserted player=${player}`);
 };
