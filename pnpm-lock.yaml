@@ -476,8 +476,8 @@ importers:
         specifier: 24.16.2
         version: 24.16.2(typescript@5.9.2)
       stockfish:
-        specifier: 16.0.0
-        version: 16.0.0
+        specifier: 17.1.0
+        version: 17.1.0
     devDependencies:
       '@eslint/js':
         specifier: 9.33.0
@@ -12462,8 +12462,8 @@ packages:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
     engines: {node: '>=18'}
 
-  stockfish@16.0.0:
-    resolution: {integrity: sha512-uu4AqsE2x0tD+SsYzZy4UtqeH4U9zDi1V8loDFDbMwCtvumGXF9j81Pg1ZmIkUgZhwQqPxQAv8IN5oy6hZa7Bw==}
+  stockfish@17.1.0:
+    resolution: {integrity: sha512-LvxdOzngaMjwdDKkZML4riABX9EWUkIE2ZJUsNvR2yFnM4WLiM6ggEXcBY8v53dK7uAfbxdJFcBiKTIQyGg6Zg==}
     hasBin: true
 
   stream-replace-string@2.0.0:
@@ -29443,7 +29443,7 @@ snapshots:
 
   stdin-discarder@0.2.2: {}
 
-  stockfish@16.0.0: {}
+  stockfish@17.1.0: {}
 
   stream-replace-string@2.0.0: {}
 
