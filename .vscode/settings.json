@@ -4,6 +4,7 @@
   "editor.formatOnSave": true,
   "editor.wordWrap": "off",
   "vsicons.presets.angular": true,
+  "jupyter.exportWithOutputEnabled": true,
   "[markdown]": {
     "editor.unicodeHighlight.ambiguousCharacters": true,
     "editor.unicodeHighlight.invisibleCharacters": true,
