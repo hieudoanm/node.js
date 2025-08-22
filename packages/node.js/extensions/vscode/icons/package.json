@@ -26,7 +26,7 @@
   "homepage": "https://github.com/hieudoanm/hieudoanm.github.io#readme",
   "engines": {
     "node": "24.6.0",
-    "vscode": "1.103.1"
+    "vscode": "1.103.2"
   },
   "scripts": {
     "format": "prettier --cache --write .",
