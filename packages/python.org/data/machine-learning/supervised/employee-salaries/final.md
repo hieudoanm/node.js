@@ -10,12 +10,17 @@ import pandas as pd
 
 salaries_data_frame = pd.read_csv("data/jobs_salaries_2023.csv")
 print(salaries_data_frame.shape)
+```
 
+    (1500, 11)
+
+
+
+```python
 column_types = salaries_data_frame.dtypes
 print(column_types)
 ```
 
-    (1500, 11)
     work_year               int64
     experience_level       object
     employment_type        object
@@ -34,6 +39,7 @@ print(column_types)
 
 
 ```python
+import pandas as pd
 import matplotlib.pyplot as plt
 
 # Count occurrences of each work_year and sort by year
@@ -42,39 +48,53 @@ work_year_counts = salaries_data_frame["work_year"].value_counts().sort_index()
 # Calculate percentages
 work_year_percent = (work_year_counts / work_year_counts.sum() * 100).round(2)
 
-# Combine into one DataFrame for display
-result = pd.DataFrame({"count": work_year_counts, "percentage": work_year_percent})
-print(result)
+# Calculate mean and median salary per year
+mean_salary = salaries_data_frame.groupby("work_year")["salary_in_usd"].mean().round(2)
+median_salary = (
+    salaries_data_frame.groupby("work_year")["salary_in_usd"].median().round(2)
+)
 
+# Combine into one DataFrame for display
+result = pd.DataFrame(
+    {
+        "count": work_year_counts,
+        "percentage": work_year_percent,
+        "mean_salary": mean_salary,
+        "median_salary": median_salary,
+    }
+)
+
+print(result)
+```
+
+               count  percentage  mean_salary  median_salary
+    work_year                                               
+    2020          75         5.0     92266.67        72000.0
+    2021         219        14.6     95977.39        82500.0
+    2022         714        47.6    129573.32       130000.0
+    2023         492        32.8    154600.18       148500.0
+
+
+
+```python
 # --- Pie Chart ---
 plt.figure(figsize=(7, 7))
 plt.pie(
-    work_year_counts, 
-    labels=work_year_counts.index, 
-    autopct="%1.1f%%", 
-    startangle=90
+    work_year_counts, labels=work_year_counts.index, autopct="%1.1f%%", startangle=90
 )
 plt.title("Distribution of Records by Work Year")
 plt.show()
 ```
 
-               count  percentage
-    work_year                   
-    2020          75         5.0
-    2021         219        14.6
-    2022         714        47.6
-    2023         492        32.8
 
-
-
-![png](final_files/final_5_1.png)
+![png](final_files/final_7_0.png)
 
 
 ### Employment Type
 
 
 ```python
-import matplotlib.pyplot as plt
+import pandas as pd
 
 # Define custom order
 order = ["FL", "CT", "PT", "FT"]
@@ -90,14 +110,46 @@ employment_type_percent = (
     employment_type_counts / employment_type_counts.sum() * 100
 ).round(2)
 
+# Calculate mean and median salary per employment_type
+mean_salary = (
+    salaries_data_frame.groupby("employment_type")["salary_in_usd"]
+    .mean()
+    .round(2)
+    .reindex(order)
+)
+median_salary = (
+    salaries_data_frame.groupby("employment_type")["salary_in_usd"]
+    .median()
+    .round(2)
+    .reindex(order)
+)
+
 # Combine into one DataFrame
 result = pd.DataFrame(
-    {"count": employment_type_counts, "percentage": employment_type_percent}
+    {
+        "count": employment_type_counts,
+        "percentage": employment_type_percent,
+        "mean_salary": mean_salary,
+        "median_salary": median_salary,
+    }
 )
 
 print(result)
+```
 
+                     count  percentage  mean_salary  median_salary
+    employment_type                                               
+    FL                   6         0.4     45420.50        40261.5
+    CT                   9         0.6    116052.11        60000.0
+    PT                  12         0.8     38112.83        20371.0
+    FT                1473        98.2    132134.13       130000.0
+
+
+
+```python
 # --- Pie Chart ---
+import matplotlib.pyplot as plt
+
 plt.figure(figsize=(7, 7))
 plt.pie(
     employment_type_counts,
@@ -110,16 +162,8 @@ plt.title("Distribution of Employment Types")
 plt.show()
 ```
 
-                     count  percentage
-    employment_type                   
-    FL                   6         0.4
-    CT                   9         0.6
-    PT                  12         0.8
-    FT                1473        98.2
 
-
-
-![png](final_files/final_7_1.png)
+![png](final_files/final_10_0.png)
 
 
 ### Salary
@@ -148,8 +192,16 @@ print(f"Median salary: ${median_salary:,.0f}")
 # Skew check
 skewness = salary_in_usd_series.skew()
 print(f"Skewness: {skewness:.2f}")
+```
+
+    Salary ranges from $5,409 to $450,000
+    Mean salary: $130,934
+    Median salary: $130,000
+    Skewness: 0.59
 
 
+
+```python
 # --- 2. Histogram ---
 plt.figure(figsize=(8, 5))
 sns.histplot(salary_in_usd_series, bins=30, kde=True)
@@ -164,8 +216,14 @@ plt.xlabel("Salary")
 plt.ylabel("Frequency")
 plt.legend()
 plt.show()
+```
 
 
+![png](final_files/final_13_0.png)
+
+
+
+```python
 # --- 3. Boxplot (to reveal outliers) ---
 plt.figure(figsize=(6, 3))
 sns.boxplot(x=salary_in_usd_series)
@@ -174,18 +232,8 @@ plt.xlabel("Salary in USD")
 plt.show()
 ```
 
-    Salary ranges from $5,409 to $450,000
-    Mean salary: $130,934
-    Median salary: $130,000
-    Skewness: 0.59
 
-
-
-![png](final_files/final_9_1.png)
-
-
-
-![png](final_files/final_9_2.png)
+![png](final_files/final_14_0.png)
 
 
 ### Experience Level (with Salary)
@@ -235,7 +283,23 @@ summary_table = (
 combined_table = result.join(summary_table)
 print("Experience Level Summary:")
 print(combined_table)
+```
 
+    Experience Level Summary:
+                      count  percentage      Mean    Median
+    experience_level                                       
+    EN                  167        11.1   69627.0   60000.0
+    MI                  353        23.5   95473.0   84053.0
+    SE                  922        61.5  151640.0  145000.0
+    EX                   58         3.9  192463.0  188518.0
+
+
+    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_67267/674642401.py:33: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+      salaries_data_frame.groupby("experience_level")["salary_in_usd"]
+
+
+
+```python
 # ========================
 # Pie Chart
 # ========================
@@ -249,7 +313,14 @@ plt.pie(
 )
 plt.title("Distribution of Experience Levels")
 plt.show()
+```
 
+
+![png](final_files/final_17_0.png)
+
+
+
+```python
 # ========================
 # Boxplot
 # ========================
@@ -270,25 +341,8 @@ plt.tight_layout()
 plt.show()
 ```
 
-    Experience Level Summary:
-                      count  percentage      Mean    Median
-    experience_level                                       
-    EN                  167        11.1   69627.0   60000.0
-    MI                  353        23.5   95473.0   84053.0
-    SE                  922        61.5  151640.0  145000.0
-    EX                   58         3.9  192463.0  188518.0
 
-
-    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_11047/3124317989.py:33: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
-      salaries_data_frame.groupby("experience_level")["salary_in_usd"]
-
-
-
-![png](final_files/final_11_2.png)
-
-
-
-![png](final_files/final_11_3.png)
+![png](final_files/final_18_0.png)
 
 
 ### Job Title (with Salary)
@@ -442,7 +496,7 @@ plt.show()
 ```
 
 
-![png](final_files/final_14_0.png)
+![png](final_files/final_21_0.png)
 
 
 ### Company Location
@@ -486,27 +540,18 @@ all_locations = all_locations.merge(salary_summary, on="company_location", how="
 # Print summary
 # ========================
 print(f"Number of unique company locations: {len(all_locations)}")
-
-pd.set_option("display.max_rows", None)  # Show all rows in output
-print("\nAll company locations with salary stats:")
-print(all_locations.to_string(index=False, line_width=10000))
-
-# ========================
-# Pie Chart
-# ========================
-plt.figure(figsize=(8, 8))
-plt.pie(
-    all_locations["count"],
-    labels=all_locations["company_location"],  # now from column
-    autopct="%1.1f%%",
-    startangle=90,
-    counterclock=False,
-)
-plt.title("Company Location Distribution", fontsize=14)
-plt.show()
 ```
 
     Number of unique company locations: 58
+
+
+
+```python
+pd.set_option("display.max_rows", None)  # Show all rows in output
+print("\nAll company locations with salary stats:")
+print(all_locations.to_string(index=False, line_width=10000))
+```
+
     
     All company locations with salary stats:
     company_location  count  percentage  accumulated_count  accumulated_percentage     Mean   Median
@@ -571,7 +616,24 @@ plt.show()
 
 
 
-![png](final_files/final_16_1.png)
+```python
+# ========================
+# Pie Chart
+# ========================
+plt.figure(figsize=(8, 8))
+plt.pie(
+    all_locations["count"],
+    labels=all_locations["company_location"],  # now from column
+    autopct="%1.1f%%",
+    startangle=90,
+    counterclock=False,
+)
+plt.title("Company Location Distribution", fontsize=14)
+plt.show()
+```
+
+
+![png](final_files/final_25_0.png)
 
 
 ### Employee Residence
@@ -616,26 +678,18 @@ all_locations = all_locations.merge(salary_summary, on="employee_residence", how
 # ========================
 print(f"Number of unique company locations: {len(all_locations)}")
 
-pd.set_option("display.max_rows", None)  # Show all rows in output
-print("\nAll company locations with salary stats:")
-print(all_locations.to_string(index=False, line_width=10000))
-
-# ========================
-# Pie Chart
-# ========================
-plt.figure(figsize=(8, 8))
-plt.pie(
-    all_locations["count"],
-    labels=all_locations["employee_residence"],  # now from column
-    autopct="%1.1f%%",
-    startangle=90,
-    counterclock=False,
-)
-plt.title("Company Location Distribution", fontsize=14)
-plt.show()
 ```
 
     Number of unique company locations: 61
+
+
+
+```python
+pd.set_option("display.max_rows", None)  # Show all rows in output
+print("\nAll company locations with salary stats:")
+print(all_locations.to_string(index=False, line_width=10000))
+```
+
     
     All company locations with salary stats:
     employee_residence  count  percentage  accumulated_count  accumulated_percentage     Mean   Median
@@ -703,7 +757,24 @@ plt.show()
 
 
 
-![png](final_files/final_18_1.png)
+```python
+# ========================
+# Pie Chart
+# ========================
+plt.figure(figsize=(8, 8))
+plt.pie(
+    all_locations["count"],
+    labels=all_locations["employee_residence"],  # now from column
+    autopct="%1.1f%%",
+    startangle=90,
+    counterclock=False,
+)
+plt.title("Company Location Distribution", fontsize=14)
+plt.show()
+```
+
+
+![png](final_files/final_29_0.png)
 
 
 #### Remote Ratio (with Salary)
@@ -751,7 +822,18 @@ result = pd.DataFrame(
 
 print("Remote Work Ratio Summary:")
 print(result)
+```
 
+    Remote Work Ratio Summary:
+                  count  percentage      Mean    Median
+    remote_ratio                                       
+    0               579       38.60  143867.0  139430.0
+    50              130        8.67   81360.0   65135.0
+    100             791       52.73  129658.0  131050.0
+
+
+
+```python
 # ========================
 # Draw Pie Chart
 # ========================
@@ -767,16 +849,8 @@ plt.title("Remote Work Ratio Distribution", fontsize=14)
 plt.show()
 ```
 
-    Remote Work Ratio Summary:
-                  count  percentage      Mean    Median
-    remote_ratio                                       
-    0               579       38.60  143867.0  139430.0
-    50              130        8.67   81360.0   65135.0
-    100             791       52.73  129658.0  131050.0
 
-
-
-![png](final_files/final_20_1.png)
+![png](final_files/final_32_0.png)
 
 
 #### Company Size (with Salary)
@@ -824,7 +898,18 @@ result = pd.DataFrame(
 
 print("Company Size Summary:")
 print(result)
+```
 
+    Company Size Summary:
+                  count  percentage      Mean    Median
+    company_size                                       
+    S               107        7.13   77723.0   61566.0
+    M              1073       71.53  139114.0  137270.0
+    L               320       21.33  121396.0  112300.0
+
+
+
+```python
 # ========================
 # Pie chart visualization
 # ========================
@@ -840,16 +925,8 @@ plt.title("Distribution of Company Size")
 plt.show()
 ```
 
-    Company Size Summary:
-                  count  percentage      Mean    Median
-    company_size                                       
-    S               107        7.13   77723.0   61566.0
-    M              1073       71.53  139114.0  137270.0
-    L               320       21.33  121396.0  112300.0
 
-
-
-![png](final_files/final_22_1.png)
+![png](final_files/final_35_0.png)
 
 
 ## Data Preparation and Model Training
@@ -929,8 +1006,16 @@ print(f"Median salary: ${median_salary:,.0f}")
 # Skew check
 skewness = salary_in_usd_series.skew()
 print(f"Skewness: {skewness:.2f}")
+```
+
+    Salary ranges from $5,679 to $412,000
+    Mean salary: $128,589
+    Median salary: $129,300
+    Skewness: 0.43
 
 
+
+```python
 # --- 2. Histogram ---
 plt.figure(figsize=(8, 5))
 sns.histplot(salary_in_usd_series, bins=30, kde=True)
@@ -945,16 +1030,28 @@ plt.xlabel("Salary")
 plt.ylabel("Frequency")
 plt.legend()
 plt.show()
+```
 
 
+![png](final_files/final_46_0.png)
+
+
+
+```python
 # --- 3. Boxplot (to reveal outliers) ---
 plt.figure(figsize=(6, 3))
 sns.boxplot(x=salary_in_usd_series)
 plt.title("Salary in USD - Boxplot")
 plt.xlabel("Salary in USD")
 plt.show()
+```
 
 
+![png](final_files/final_47_0.png)
+
+
+
+```python
 # --- 4. Identify outliers using IQR rule ---
 Q1 = salary_in_usd_series.quantile(0.25)
 Q3 = salary_in_usd_series.quantile(0.75)
@@ -963,36 +1060,15 @@ IQR = Q3 - Q1
 lower_bound = Q1 - 1.5 * IQR
 upper_bound = Q3 + 1.5 * IQR
 
-outliers = salaries_data_frame[(salaries_data_frame["salary_in_usd"] < lower_bound) | (salaries_data_frame["salary_in_usd"] > upper_bound)]
+outliers = salaries_data_frame[
+    (salaries_data_frame["salary_in_usd"] < lower_bound)
+    | (salaries_data_frame["salary_in_usd"] > upper_bound)
+]
 
 print(f"\nNumber of outliers: {len(outliers)}")
 print("Outlier rows:")
 print(outliers.sort_values("salary_in_usd").to_string(index=False, line_width=10000))
-
-
-# --- 5. Remove outliers ---
-print(f"\nData shape before removing outliers: {salaries_data_frame.shape}")
-
-salaries_data_frame = salaries_data_frame[
-    (salaries_data_frame["salary_in_usd"] >= lower_bound) & (salaries_data_frame["salary_in_usd"] <= upper_bound)
-].copy()
-
-print(f"Data shape after removing outliers: {salaries_data_frame.shape}")
 ```
-
-    Salary ranges from $5,679 to $412,000
-    Mean salary: $128,589
-    Median salary: $129,300
-    Skewness: 0.43
-
-
-
-![png](final_files/final_32_1.png)
-
-
-
-![png](final_files/final_32_2.png)
-
 
     
     Number of outliers: 6
@@ -1004,6 +1080,21 @@ print(f"Data shape after removing outliers: {salaries_data_frame.shape}")
           2022               EX              FT             Data Engineer 324000.0             USD       324000.0                 US           100               US            M
           2023               SE              FT Machine Learning Engineer 342300.0             USD       342300.0                 US             0               US            L
           2020               SE              FT            Data Scientist 412000.0             USD       412000.0                 US           100               US            L
+
+
+
+```python
+# --- 5. Remove outliers ---
+print(f"\nData shape before removing outliers: {salaries_data_frame.shape}")
+
+salaries_data_frame = salaries_data_frame[
+    (salaries_data_frame["salary_in_usd"] >= lower_bound)
+    & (salaries_data_frame["salary_in_usd"] <= upper_bound)
+].copy()
+
+print(f"Data shape after removing outliers: {salaries_data_frame.shape}")
+```
+
     
     Data shape before removing outliers: (1030, 11)
     Data shape after removing outliers: (1024, 11)
@@ -1197,7 +1288,7 @@ plt.show()
 
 
 
-![png](final_files/final_37_1.png)
+![png](final_files/final_54_1.png)
 
 
 #### Features Importance
@@ -1238,17 +1329,6 @@ feature_importance_salaries_data_frame = (
 
 print("\n=== Aggregated Feature Importances (LinearRegression coefficients) ===")
 print(feature_importance_salaries_data_frame)
-
-# ========================
-# 8. Visualize aggregated feature importances
-# ========================
-plt.figure(figsize=(8, 5))
-sns.barplot(x="importance", y="feature", data=feature_importance_salaries_data_frame)
-plt.title("Aggregated Feature Importances (LinearRegression Coefficients)")
-plt.xlabel("Importance (absolute coefficient)")
-plt.ylabel("Feature")
-plt.tight_layout()
-plt.show()
 ```
 
     
@@ -1263,10 +1343,24 @@ plt.show()
 
 
 
-![png](final_files/final_39_1.png)
+```python
+# ========================
+# 8. Visualize aggregated feature importances
+# ========================
+plt.figure(figsize=(8, 5))
+sns.barplot(x="importance", y="feature", data=feature_importance_salaries_data_frame)
+plt.title("Aggregated Feature Importances (LinearRegression Coefficients)")
+plt.xlabel("Importance (absolute coefficient)")
+plt.ylabel("Feature")
+plt.tight_layout()
+plt.show()
+```
 
 
-### Second Training
+![png](final_files/final_57_0.png)
+
+
+### Second Training (Removing Company Size and Remote Ratio)
 
 
 ```python
@@ -1464,7 +1558,7 @@ plt.show()
 
 
 
-![png](final_files/final_43_1.png)
+![png](final_files/final_61_1.png)
 
 
 ### Group Employees by Job Title, Experience Level, Employee Residence, Company Location
@@ -1513,6 +1607,10 @@ grouped = grouped[
 # Show result
 print(grouped.to_string(index=False, line_width=10000))
 ```
+
+    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_67267/3461952642.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+      salaries_data_frame.groupby(
+
 
                     job_title experience_level employee_residence company_location  count  percentage  mean_salary  median_salary
                 Data Engineer               SE                 US               US    216       21.09     154309.0       150000.0
@@ -1652,10 +1750,6 @@ print(grouped.to_string(index=False, line_width=10000))
                 Data Engineer               SE                 RO               GB      1        0.10      76833.0        76833.0
                 Data Engineer               SE                 MX               MX      1        0.10      33511.0        33511.0
                Data Scientist               EN                 US               DE      1        0.10      50000.0        50000.0
-
-
-    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_11047/3461952642.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
-      salaries_data_frame.groupby(
 
 
 
