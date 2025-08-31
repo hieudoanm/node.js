@@ -1127,27 +1127,27 @@ print(salaries_data_frame.shape)
 # ========================
 # 2. Define features & target
 # ========================
-categorical_cols = [
+categorical_cols_1 = [
     "experience_level",
     "job_title",
     "employee_residence",
     "company_location",
     "company_size",
 ]
-numeric_cols = ["remote_ratio"]
-features = categorical_cols + numeric_cols
+numeric_cols_1 = ["work_year", "remote_ratio"]
+features = categorical_cols_1 + numeric_cols_1
 
-X = salaries_data_frame[features]
-X.shape
+X_1 = salaries_data_frame[features]
+X_1.shape
 
-y = salaries_data_frame["salary_in_usd"]
-y.shape
+y_1 = salaries_data_frame["salary_in_usd"]
+y_1.shape
 
 # ========================
 # 3. Split dataset
 # ========================
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+X_train_1, X_test_1, y_train_1, y_test_1 = train_test_split(
+    X_1, y_1, test_size=0.2, random_state=42
 )
 
 # ========================
@@ -1155,13 +1155,13 @@ X_train, X_test, y_train, y_test = train_test_split(
 # ========================
 preprocessor_1 = ColumnTransformer(
     transformers=[
-        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_cols),
-        ("num", StandardScaler(), numeric_cols),
+        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_cols_1),
+        ("num", StandardScaler(), numeric_cols_1),
     ]
 )
 
-X_train_processed = preprocessor_1.fit_transform(X_train)
-X_test_processed = preprocessor_1.transform(X_test)
+X_train_processed = preprocessor_1.fit_transform(X_train_1)
+X_test_processed = preprocessor_1.transform(X_test_1)
 
 # ========================
 # 5. Define models_1
@@ -1204,46 +1204,46 @@ models_1 = {
 # ========================
 # 6. Train & evaluate
 # ========================
-results = {}
-true_avg_salary = y_test.mean()  # True average salary
+results_1 = {}
+true_avg_salary_1 = y_test_1.mean()  # True average salary
 
 for name, model in models_1.items():
-    model.fit(X_train_processed, y_train)
-    y_pred = model.predict(X_test_processed)
+    model.fit(X_train_processed, y_train_1)
+    y_pred_1 = model.predict(X_test_processed)
 
-    rmse = root_mean_squared_error(y_test, y_pred)
-    mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
-    pred_avg_salary = y_pred.mean()  # Predicted average salary
+    r2_1 = r2_score(y_test_1, y_pred_1)
+    mae_1 = mean_absolute_error(y_test_1, y_pred_1)
+    rmse_1 = root_mean_squared_error(y_test_1, y_pred_1)
+    pred_avg_salary_1 = y_pred_1.mean()  # Predicted average salary
 
-    results[name] = {
-        "RMSE": rmse,
-        "RMSE % of Avg": (rmse / true_avg_salary) * 100,
-        "MAE": mae,
-        "MAE % of Avg": (mae / true_avg_salary) * 100,
-        "R²": r2,
-        "True Avg Salary": true_avg_salary,
-        "Predicted Avg Salary": pred_avg_salary,
+    results_1[name] = {
+        "R²": r2_1,
+        "MAE": mae_1,
+        "RMSE": rmse_1,
+        "Predicted Avg Salary": pred_avg_salary_1,
+        "True Avg Salary": true_avg_salary_1,
+        "MAE % of Avg": (mae_1 / true_avg_salary_1) * 100,
+        "RMSE % of Avg": (rmse_1 / true_avg_salary_1) * 100,
     }
 
 # Convert to DataFrame for easy comparison
-results_df = pd.DataFrame(results).T
-results_df = results_df.sort_values(by="R²", ascending=False)
+results_1_df = pd.DataFrame(results_1).T
+results_1_df = results_1_df.sort_values(by="R²", ascending=False)
 
-print(results_df.round(2).to_string(line_width=10000))
-print("\nBest model based on R²:", results_df.index[0])
+print(results_1_df.to_string(line_width=10000))
+print("\nBest model based on R² (first try):", results_1_df.index[0])
 ```
 
     (1024, 11)
-                          RMSE  RMSE % of Avg       MAE  MAE % of Avg    R²  True Avg Salary  Predicted Avg Salary
-    LinearRegression  35762.74          29.00  27385.69         22.21  0.62        123309.06             120824.26
-    RandomForest      36751.52          29.80  29248.37         23.72  0.60        123309.06             124106.12
-    CatBoost          36966.07          29.98  28581.21         23.18  0.59        123309.06             124048.19
-    LightGBM          37853.95          30.70  30307.25         24.58  0.58        123309.06             124148.50
-    GradientBoosting  37888.40          30.73  28769.98         23.33  0.57        123309.06             124405.32
-    XGBoost           39276.33          31.85  29720.77         24.10  0.54        123309.06             125220.46
+                            R²           MAE          RMSE  Predicted Avg Salary  True Avg Salary  MAE % of Avg  RMSE % of Avg
+    LinearRegression  0.629053  27303.373122  35368.517685         120906.412330    123309.063415     22.142227      28.682821
+    CatBoost          0.616604  28005.258412  35957.105376         122872.555382    123309.063415     22.711436      29.160148
+    RandomForest      0.606062  29080.926635  36448.131228         124015.973678    123309.063415     23.583771      29.558355
+    LightGBM          0.592627  29326.523212  37064.429899         122512.490878    123309.063415     23.782942      30.058155
+    GradientBoosting  0.588988  28621.231316  37229.615673         123475.372894    123309.063415     23.210971      30.192116
+    XGBoost           0.568748  29118.501412  38135.275702         123119.304688    123309.063415     23.614243      30.926580
     
-    Best model based on R²: LinearRegression
+    Best model based on R² (first try): LinearRegression
 
 
     /opt/homebrew/lib/python3.13/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
@@ -1284,7 +1284,7 @@ plt.show()
 
 ```
 
-    Linear Regression → RMSE: 35762.74, R²: 0.621
+    Linear Regression → RMSE: 35368.52, R²: 0.629
 
 
 
@@ -1304,15 +1304,15 @@ linreg_coefs = models_1["LinearRegression"].coef_
 
 # Use same OHE feature names as before
 ohe = preprocessor_1.named_transformers_["cat"]
-ohe_features = ohe.get_feature_names_out(categorical_cols)
-all_features = list(ohe_features) + numeric_cols
+ohe_features = ohe.get_feature_names_out(categorical_cols_1)
+all_features = list(ohe_features) + numeric_cols_1
 
 # Map back to original columns
 def map_to_original(feature_name):
-    for col in categorical_cols:
+    for col in categorical_cols_1:
         if feature_name.startswith(col + "_"):
             return col
-    if feature_name in numeric_cols:
+    if feature_name in numeric_cols_1:
         return feature_name
     return feature_name
 
@@ -1334,12 +1334,13 @@ print(feature_importance_salaries_data_frame)
     
     === Aggregated Feature Importances (LinearRegression coefficients) ===
                   feature     importance
-    0  employee_residence  870374.002466
-    1    company_location  805913.144172
-    2    experience_level  116335.128606
-    3           job_title   66494.832056
-    4        company_size   22893.529989
-    5        remote_ratio      42.901199
+    0  employee_residence  861523.318181
+    1    company_location  821887.349490
+    2    experience_level  113766.160440
+    3           job_title   65834.525101
+    4        company_size   18510.995165
+    5           work_year    4035.817322
+    6        remote_ratio     871.710623
 
 
 
@@ -1360,7 +1361,7 @@ plt.show()
 ![png](final_files/final_57_0.png)
 
 
-### Second Training (Removing Company Size and Remote Ratio)
+### Second Training (Removing Work Year, Company Size and Remote Ratio)
 
 
 ```python
@@ -1375,7 +1376,7 @@ from catboost import CatBoostRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import root_mean_squared_error, r2_score, mean_absolute_error
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
 
 
 print(salaries_data_frame.shape)
@@ -1451,7 +1452,7 @@ models_2 = {
 # 6. Train & evaluate
 # ========================
 results_2 = {}
-true_avg_salary = y_test.mean()  # True average salary
+true_avg_salary = y_test_2.mean()  # True average salary
 
 for name, model in models_2.items():
     model.fit(X_train_processed_2, y_train_2)
@@ -1463,9 +1464,9 @@ for name, model in models_2.items():
     pred_avg_salary_2 = y_pred_2.mean()  # Predicted average salary
 
     results_2[name] = {
-        "RMSE": rmse_2,
-        "MAE": mae_2,
         "R²": r2_2,
+        "MAE": mae_2,
+        "RMSE": rmse_2,
         "Predicted Avg Salary": pred_avg_salary_2,
     }
 
@@ -1478,13 +1479,13 @@ print("\nBest model based on R²:", results_df_2.index[0])
 ```
 
     (1024, 11)
-                              RMSE           MAE        R²  Predicted Avg Salary
-    LinearRegression  35460.262713  27612.691817  0.627127         120270.467793
-    CatBoost          36032.043269  28061.036067  0.615005         122543.885647
-    GradientBoosting  36277.145824  27990.598879  0.609749         123513.312532
-    XGBoost           36652.996185  28507.822847  0.601621         123548.078125
-    RandomForest      36753.630485  29243.640004  0.599430         123197.168178
-    LightGBM          37258.456403  29757.696103  0.588351         122402.832104
+                            R²           MAE          RMSE  Predicted Avg Salary
+    LinearRegression  0.627127  27612.691817  35460.262713         120270.467793
+    CatBoost          0.615005  28061.036067  36032.043269         122543.885647
+    GradientBoosting  0.609749  27990.598879  36277.145824         123513.312532
+    XGBoost           0.601621  28507.822847  36652.996185         123548.078125
+    RandomForest      0.599430  29243.640004  36753.630485         123197.168178
+    LightGBM          0.588351  29757.696103  37258.456403         122402.832104
     
     Best model based on R²: LinearRegression
 
@@ -1493,72 +1494,136 @@ print("\nBest model based on R²:", results_df_2.index[0])
       warnings.warn(
 
 
-#### Feature Importance
+#### Third Choice (Add Work Year Again)
 
 
 ```python
 # ========================
-# 7. Aggregate feature importances by original feature (LinearRegression)
+# 1. Import libraries
 # ========================
-
-# Get coefficients from LinearRegression
-linear_regression_coefs = models_2["LinearRegression"].coef_
-
-# Use same OHE feature names as before
-ohe_2 = preprocessor_2.named_transformers_["cat"]
-ohe_features_2 = ohe_2.get_feature_names_out(features_2)
-all_features_2 = list(ohe_features_2)
-
-
-# Map back to original columns
-def map_to_original(feature_name):
-    for col in categorical_cols:
-        if feature_name.startswith(col + "_"):
-            return col
-    if feature_name in numeric_cols:
-        return feature_name
-    return feature_name
+from sklearn.model_selection import train_test_split
+from sklearn.compose import ColumnTransformer
+from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
+from catboost import CatBoostRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.metrics import root_mean_squared_error, r2_score, mean_absolute_error
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 
-original_features_2 = [map_to_original(f) for f in all_features_2]
+print(salaries_data_frame.shape)
 
-# Aggregate absolute coefficients as importance
-feature_importance_salaries_data_frame = (
-    pd.DataFrame(
-        {"feature": original_features_2, "importance": abs(linear_regression_coefs)}
-    )
-    .groupby("feature")
-    .sum()
-    .sort_values(by="importance", ascending=False)
-    .reset_index()
+# ========================
+# 2. Define features & target
+# ========================
+categorical_cols_3 = [
+    "experience_level",
+    "job_title",
+    "employee_residence",
+    "company_location",
+]
+numeric_cols_3 = ["work_year", "remote_ratio"]
+features = categorical_cols_3 + numeric_cols_3
+
+X_3 = salaries_data_frame[features]
+X_3.shape
+
+y_3 = salaries_data_frame["salary_in_usd"]
+y_3.shape
+
+# ========================
+# 3. Split dataset
+# ========================
+X_train_3, X_test_3, y_train_3, y_test_3 = train_test_split(
+    X_3, y_3, test_size=0.2, random_state=42
 )
 
-print("\n=== Aggregated Feature Importances (LinearRegression coefficients) ===")
-print(feature_importance_salaries_data_frame)
+# ========================
+# 4. Preprocess features
+# ========================
+preprocessor_3 = ColumnTransformer(
+    transformers=[
+        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_cols_3),
+        ("num", StandardScaler(), numeric_cols_3),
+    ]
+)
+
+X_train_processed = preprocessor_3.fit_transform(X_train_3)
+X_test_processed = preprocessor_3.transform(X_test_3)
 
 # ========================
-# 8. Visualize aggregated feature importances
+# 5. Define models_1
 # ========================
-plt.figure(figsize=(8, 5))
-sns.barplot(x="importance", y="feature", data=feature_importance_salaries_data_frame)
-plt.title("Aggregated Feature Importances (LinearRegression Coefficients)")
-plt.xlabel("Importance (absolute coefficient)")
-plt.ylabel("Feature")
-plt.tight_layout()
-plt.show()
+models_3 = {
+    "LinearRegression": LinearRegression(),
+    "RandomForest": RandomForestRegressor(
+        n_estimators=500,
+        max_depth=10,
+        min_samples_leaf=2,
+        max_features="sqrt",
+        random_state=42,
+        n_jobs=-1,
+    ),
+    "GradientBoosting": GradientBoostingRegressor(
+        n_estimators=500, learning_rate=0.05, max_depth=5, random_state=42
+    ),
+    "XGBoost": XGBRegressor(
+        n_estimators=500,
+        learning_rate=0.05,
+        max_depth=6,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        random_state=42,
+    ),
+    "LightGBM": LGBMRegressor(
+        n_estimators=500,
+        learning_rate=0.05,
+        max_depth=-1,
+        num_leaves=31,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        random_state=42,
+        verbose=-1,
+    ),
+    "CatBoost": CatBoostRegressor(
+        iterations=500, learning_rate=0.05, depth=6, random_state=42, verbose=0
+    ),
+}
+# ========================
+# 6. Train & evaluate
+# ========================
+results_3 = {}
+true_avg_salary_3 = y_test_3.mean()  # True average salary
+
+for name, model in models_3.items():
+    model.fit(X_train_processed, y_train_3)
+    y_pred_3 = model.predict(X_test_processed)
+
+    r2_3 = r2_score(y_test_3, y_pred_3)
+    mae_3 = mean_absolute_error(y_test_3, y_pred_3)
+    rmse_3 = root_mean_squared_error(y_test_3, y_pred_3)
+    pred_avg_salary_3 = y_pred_3.mean()  # Predicted average salary
+
+    results_3[name] = {
+        "R²": r2_3,
+        "MAE": mae_3,
+        "RMSE": rmse_3,
+        "Predicted Avg Salary": pred_avg_salary_3,
+        "True Avg Salary": true_avg_salary_3,
+        "MAE % of Avg": (mae_3 / true_avg_salary_3) * 100,
+        "RMSE % of Avg": (rmse_3 / true_avg_salary_3) * 100,
+    }
+
+# Convert to DataFrame for easy comparison
+results_3_df = pd.DataFrame(results_3).T
+results_3_df = results_3_df.sort_values(by="R²", ascending=False)
+
+print(results_3_df.to_string(line_width=10000))
+print("\nBest model based on R² (third try):", results_3_df.index[0])
 ```
 
-    
-    === Aggregated Feature Importances (LinearRegression coefficients) ===
-                  feature     importance
-    0  employee_residence  906657.879079
-    1    company_location  803909.312904
-    2    experience_level  125013.224016
-    3           job_title   62849.875465
-
-
-
-![png](final_files/final_61_1.png)
+    (1024, 11)
 
 
 ### Group Employees by Job Title, Experience Level, Employee Residence, Company Location
@@ -1607,10 +1672,6 @@ grouped = grouped[
 # Show result
 print(grouped.to_string(index=False, line_width=10000))
 ```
-
-    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_67267/3461952642.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
-      salaries_data_frame.groupby(
-
 
                     job_title experience_level employee_residence company_location  count  percentage  mean_salary  median_salary
                 Data Engineer               SE                 US               US    216       21.09     154309.0       150000.0
@@ -1752,6 +1813,10 @@ print(grouped.to_string(index=False, line_width=10000))
                Data Scientist               EN                 US               DE      1        0.10      50000.0        50000.0
 
 
+    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_67267/3461952642.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+      salaries_data_frame.groupby(
+
+
 
 ```python
 # 1. Create new samples with STRING values and updated realistic salary fields
@@ -1803,10 +1868,10 @@ new_samples = pd.DataFrame(
 X_new = new_samples.drop(columns=["salary", "salary_currency", "salary_in_usd"])
 
 # 3. Apply the SAME preprocessing pipeline you used for training
-X_new_processed = preprocessor_2.transform(X_new)
+X_new_processed = preprocessor_3.transform(X_new)
 
 # 4. Predict using the trained model
-predictions = models_2["LinearRegression"].predict(X_new_processed)
+predictions = models_3["LinearRegression"].predict(X_new_processed)
 
 # 5. Attach predictions back
 new_samples["predicted_salary_usd"] = predictions.round(2)
@@ -1829,7 +1894,7 @@ print(new_samples.to_string(index=False, line_width=10000))
 ```
 
      work_year experience_level employment_type      job_title employee_residence company_location company_size  remote_ratio   salary salary_currency  salary_in_usd  predicted_salary_usd  error_percentage       comment
-          2023               SE              FT Data Scientist                 US               US            M           100 160000.0             USD       160000.0             161299.83              0.81  ✅ Acceptable
-          2023               MI              FT  Data Engineer                 GB               GB            L            50  82528.0             USD        82528.0              78889.00             -4.41  ✅ Acceptable
-          2023               EN              FT   Data Analyst                 BR               BR            S             0   8000.0             USD         8000.0             -23555.56           -394.44 ⚠️ High Error
+          2023               SE              FT Data Scientist                 US               US            M           100 160000.0             USD       160000.0             167389.26              4.62  ✅ Acceptable
+          2023               MI              FT  Data Engineer                 GB               GB            L            50  82528.0             USD        82528.0              87356.71              5.85  ✅ Acceptable
+          2023               EN              FT   Data Analyst                 BR               BR            S             0   8000.0             USD         8000.0             -14442.74           -280.53 ⚠️ High Error
 
