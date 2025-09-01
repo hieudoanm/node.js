@@ -34,7 +34,7 @@
     "@graphql-codegen/cli": "5.0.7",
     "@graphql-codegen/introspection": "4.0.3",
     "@graphql-codegen/typescript": "4.1.6",
-    "@graphql-codegen/typescript-resolvers": "4.5.1",
+    "@graphql-codegen/typescript-resolvers": "4.5.2",
     "@types/jest": "30.0.0",
     "@types/node": "24.3.0",
     "@webpack-cli/generators": "3.0.7",
