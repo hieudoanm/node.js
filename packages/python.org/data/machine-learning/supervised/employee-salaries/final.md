@@ -68,7 +68,7 @@ print(result)
 ```
 
                count  percentage  mean_salary  median_salary
-    work_year                                               
+    work_year
     2020          75         5.0     92266.67        72000.0
     2021         219        14.6     95977.39        82500.0
     2022         714        47.6    129573.32       130000.0
@@ -138,7 +138,7 @@ print(result)
 ```
 
                      count  percentage  mean_salary  median_salary
-    employment_type                                               
+    employment_type
     FL                   6         0.4     45420.50        40261.5
     CT                   9         0.6    116052.11        60000.0
     PT                  12         0.8     38112.83        20371.0
@@ -287,14 +287,14 @@ print(combined_table)
 
     Experience Level Summary:
                       count  percentage      Mean    Median
-    experience_level                                       
+    experience_level
     EN                  167        11.1   69627.0   60000.0
     MI                  353        23.5   95473.0   84053.0
     SE                  922        61.5  151640.0  145000.0
     EX                   58         3.9  192463.0  188518.0
 
 
-    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_67267/674642401.py:33: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_6856/674642401.py:33: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
       salaries_data_frame.groupby("experience_level")["salary_in_usd"]
 
 
@@ -390,7 +390,7 @@ print(all_job_titles.to_string(index=False, line_width=10000))
 ```
 
     Number of unique job titles: 69
-    
+
     All job titles with accumulation, mean & median salary:
                                    job_title  count  percentage  accumulated_count  accumulated_percentage     Mean   Median
                                Data Engineer    366       24.40                366                   24.40 131523.0 130000.0
@@ -484,8 +484,8 @@ job_counts_for_pie = pd.concat([top_jobs, pd.Series({"Other": other_count})])
 # Pie Chart
 plt.figure(figsize=(8, 8))
 plt.pie(
-    job_counts_for_pie, 
-    labels=job_counts_for_pie.index, 
+    job_counts_for_pie,
+    labels=job_counts_for_pie.index,
     autopct="%1.1f%%",
     startangle=90,
     colors=plt.cm.tab20.colors  # color map for slices
@@ -552,7 +552,7 @@ print("\nAll company locations with salary stats:")
 print(all_locations.to_string(index=False, line_width=10000))
 ```
 
-    
+
     All company locations with salary stats:
     company_location  count  percentage  accumulated_count  accumulated_percentage     Mean   Median
                   US   1101       73.40               1101                   73.40 152070.0 145000.0
@@ -690,7 +690,7 @@ print("\nAll company locations with salary stats:")
 print(all_locations.to_string(index=False, line_width=10000))
 ```
 
-    
+
     All company locations with salary stats:
     employee_residence  count  percentage  accumulated_count  accumulated_percentage     Mean   Median
                     US   1074       71.60               1074                   71.60 153964.0 145000.0
@@ -826,7 +826,7 @@ print(result)
 
     Remote Work Ratio Summary:
                   count  percentage      Mean    Median
-    remote_ratio                                       
+    remote_ratio
     0               579       38.60  143867.0  139430.0
     50              130        8.67   81360.0   65135.0
     100             791       52.73  129658.0  131050.0
@@ -902,7 +902,7 @@ print(result)
 
     Company Size Summary:
                   count  percentage      Mean    Median
-    company_size                                       
+    company_size
     S               107        7.13   77723.0   61566.0
     M              1073       71.53  139114.0  137270.0
     L               320       21.33  121396.0  112300.0
@@ -1070,7 +1070,7 @@ print("Outlier rows:")
 print(outliers.sort_values("salary_in_usd").to_string(index=False, line_width=10000))
 ```
 
-    
+
     Number of outliers: 6
     Outlier rows:
      work_year experience_level employment_type                 job_title   salary salary_currency  salary_in_usd employee_residence  remote_ratio company_location company_size
@@ -1095,7 +1095,7 @@ salaries_data_frame = salaries_data_frame[
 print(f"Data shape after removing outliers: {salaries_data_frame.shape}")
 ```
 
-    
+
     Data shape before removing outliers: (1030, 11)
     Data shape after removing outliers: (1024, 11)
 
@@ -1160,8 +1160,8 @@ preprocessor_1 = ColumnTransformer(
     ]
 )
 
-X_train_processed = preprocessor_1.fit_transform(X_train_1)
-X_test_processed = preprocessor_1.transform(X_test_1)
+X_train_processed_1 = preprocessor_1.fit_transform(X_train_1)
+X_test_processed_1 = preprocessor_1.transform(X_test_1)
 
 # ========================
 # 5. Define models_1
@@ -1208,8 +1208,8 @@ results_1 = {}
 true_avg_salary_1 = y_test_1.mean()  # True average salary
 
 for name, model in models_1.items():
-    model.fit(X_train_processed, y_train_1)
-    y_pred_1 = model.predict(X_test_processed)
+    model.fit(X_train_processed_1, y_train_1)
+    y_pred_1 = model.predict(X_test_processed_1)
 
     r2_1 = r2_score(y_test_1, y_pred_1)
     mae_1 = mean_absolute_error(y_test_1, y_pred_1)
@@ -1242,7 +1242,7 @@ print("\nBest model based on R² (first try):", results_1_df.index[0])
     LightGBM          0.592627  29326.523212  37064.429899         122512.490878    123309.063415     23.782942      30.058155
     GradientBoosting  0.588988  28621.231316  37229.615673         123475.372894    123309.063415     23.210971      30.192116
     XGBoost           0.568748  29118.501412  38135.275702         123119.304688    123309.063415     23.614243      30.926580
-    
+
     Best model based on R² (first try): LinearRegression
 
 
@@ -1258,22 +1258,27 @@ import matplotlib.pyplot as plt
 
 # Fit Linear Regression only
 lin_model = LinearRegression()
-lin_model.fit(X_train_processed, y_train)
+lin_model.fit(X_train_processed_1, y_train_1)
 
 # Predictions
-y_pred_lin = lin_model.predict(X_test_processed)
+y_pred_lin_1 = lin_model.predict(X_test_processed_1)
 
 # Evaluation
-rmse = root_mean_squared_error(y_test, y_pred_lin)
-r2 = r2_score(y_test, y_pred_lin)
+rmse = root_mean_squared_error(y_test_1, y_pred_lin_1)
+r2 = r2_score(y_test_1, y_pred_lin_1)
 
 print(f"Linear Regression → RMSE: {rmse:.2f}, R²: {r2:.3f}")
 
 # ======== Plot Predicted vs Actual ========
 plt.figure(figsize=(6,6))
-plt.scatter(y_test, y_pred_lin, alpha=0.5, edgecolor="k")
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 
-         color="red", linewidth=2, label="Perfect Prediction")
+plt.scatter(y_test_1, y_pred_lin_1, alpha=0.5, edgecolor="k")
+plt.plot(
+    [y_test_1.min(), y_test_1.max()],
+    [y_test_1.min(), y_test_1.max()],
+    color="red",
+    linewidth=2,
+    label="Perfect Prediction",
+)
 
 plt.xlabel("Actual Salary (USD)")
 plt.ylabel("Predicted Salary (USD)")
@@ -1281,7 +1286,6 @@ plt.title(f"Linear Regression: Predicted vs Actual (R² = {r2:.3f})")
 plt.legend()
 plt.tight_layout()
 plt.show()
-
 ```
 
     Linear Regression → RMSE: 35368.52, R²: 0.629
@@ -1300,27 +1304,29 @@ plt.show()
 # ========================
 
 # Get coefficients from LinearRegression
-linreg_coefs = models_1["LinearRegression"].coef_
+linreg_coefs_1 = models_1["LinearRegression"].coef_
 
 # Use same OHE feature names as before
-ohe = preprocessor_1.named_transformers_["cat"]
-ohe_features = ohe.get_feature_names_out(categorical_cols_1)
-all_features = list(ohe_features) + numeric_cols_1
+ohe_1 = preprocessor_1.named_transformers_["cat"]
+ohe_features_1 = ohe_1.get_feature_names_out(categorical_cols_1)
+all_features_1 = list(ohe_features_1) + numeric_cols_1
+
 
 # Map back to original columns
-def map_to_original(feature_name):
-    for col in categorical_cols_1:
-        if feature_name.startswith(col + "_"):
-            return col
-    if feature_name in numeric_cols_1:
-        return feature_name
-    return feature_name
+def map_to_original(feature_name_1):
+    for col_1 in categorical_cols_1:
+        if feature_name_1.startswith(col_1 + "_"):
+            return col_1
+    if feature_name_1 in numeric_cols_1:
+        return feature_name_1
+    return feature_name_1
 
-original_features = [map_to_original(f) for f in all_features]
+
+original_features = [map_to_original(f) for f in all_features_1]
 
 # Aggregate absolute coefficients as importance
-feature_importance_salaries_data_frame = (
-    pd.DataFrame({"feature": original_features, "importance": abs(linreg_coefs)})
+feature_importance_salaries_data_frame_1 = (
+    pd.DataFrame({"feature": original_features, "importance": abs(linreg_coefs_1)})
     .groupby("feature")
     .sum()
     .sort_values(by="importance", ascending=False)
@@ -1328,10 +1334,10 @@ feature_importance_salaries_data_frame = (
 )
 
 print("\n=== Aggregated Feature Importances (LinearRegression coefficients) ===")
-print(feature_importance_salaries_data_frame)
+print(feature_importance_salaries_data_frame_1)
 ```
 
-    
+
     === Aggregated Feature Importances (LinearRegression coefficients) ===
                   feature     importance
     0  employee_residence  861523.318181
@@ -1349,7 +1355,7 @@ print(feature_importance_salaries_data_frame)
 # 8. Visualize aggregated feature importances
 # ========================
 plt.figure(figsize=(8, 5))
-sns.barplot(x="importance", y="feature", data=feature_importance_salaries_data_frame)
+sns.barplot(x="importance", y="feature", data=feature_importance_salaries_data_frame_1)
 plt.title("Aggregated Feature Importances (LinearRegression Coefficients)")
 plt.xlabel("Importance (absolute coefficient)")
 plt.ylabel("Feature")
@@ -1486,7 +1492,7 @@ print("\nBest model based on R²:", results_df_2.index[0])
     XGBoost           0.601621  28507.822847  36652.996185         123548.078125
     RandomForest      0.599430  29243.640004  36753.630485         123197.168178
     LightGBM          0.588351  29757.696103  37258.456403         122402.832104
-    
+
     Best model based on R²: LinearRegression
 
 
@@ -1494,7 +1500,7 @@ print("\nBest model based on R²:", results_df_2.index[0])
       warnings.warn(
 
 
-#### Third Choice (Add Work Year Again)
+#### Third Try (Add Work Year Again)
 
 
 ```python
@@ -1523,7 +1529,7 @@ categorical_cols_3 = [
     "employee_residence",
     "company_location",
 ]
-numeric_cols_3 = ["work_year", "remote_ratio"]
+numeric_cols_3 = ["work_year"]
 features = categorical_cols_3 + numeric_cols_3
 
 X_3 = salaries_data_frame[features]
@@ -1549,8 +1555,8 @@ preprocessor_3 = ColumnTransformer(
     ]
 )
 
-X_train_processed = preprocessor_3.fit_transform(X_train_3)
-X_test_processed = preprocessor_3.transform(X_test_3)
+X_train_processed_3 = preprocessor_3.fit_transform(X_train_3)
+X_test_processed_3 = preprocessor_3.transform(X_test_3)
 
 # ========================
 # 5. Define models_1
@@ -1597,8 +1603,8 @@ results_3 = {}
 true_avg_salary_3 = y_test_3.mean()  # True average salary
 
 for name, model in models_3.items():
-    model.fit(X_train_processed, y_train_3)
-    y_pred_3 = model.predict(X_test_processed)
+    model.fit(X_train_processed_3, y_train_3)
+    y_pred_3 = model.predict(X_test_processed_3)
 
     r2_3 = r2_score(y_test_3, y_pred_3)
     mae_3 = mean_absolute_error(y_test_3, y_pred_3)
@@ -1624,6 +1630,134 @@ print("\nBest model based on R² (third try):", results_3_df.index[0])
 ```
 
     (1024, 11)
+                            R²           MAE          RMSE  Predicted Avg Salary  True Avg Salary  MAE % of Avg  RMSE % of Avg
+    LinearRegression  0.633920  27537.129602  35135.728152         120678.288725    123309.063415     22.331797      28.494035
+    CatBoost          0.627474  27833.232327  35443.753920         121734.009514    123309.063415     22.571927      28.743835
+    GradientBoosting  0.612539  28147.782603  36147.263382         122598.011727    123309.063415     22.827018      29.314361
+    RandomForest      0.606847  28923.872697  36411.778818         123142.905195    123309.063415     23.456404      29.528875
+    LightGBM          0.591634  29415.146085  37109.596027         121173.885429    123309.063415     23.854813      30.094784
+    XGBoost           0.581715  29218.391549  37557.537273         121785.054688    123309.063415     23.695251      30.458051
+
+    Best model based on R² (third try): LinearRegression
+
+
+    /opt/homebrew/lib/python3.13/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+      warnings.warn(
+
+
+#### Linear Regression
+
+
+```python
+import matplotlib.pyplot as plt
+
+# Fit Linear Regression only
+lin_model = LinearRegression()
+lin_model.fit(X_train_processed_3, y_train_3)
+
+# Predictions
+y_pred_lin_3 = lin_model.predict(X_test_processed_3)
+
+# Evaluation
+rmse = root_mean_squared_error(y_test_3, y_pred_lin)
+r2 = r2_score(y_test_3, y_pred_lin_3)
+
+print(f"Linear Regression → RMSE: {rmse:.2f}, R²: {r2:.3f}")
+
+# ======== Plot Predicted vs Actual ========
+plt.figure(figsize=(6, 6))
+plt.scatter(y_test_1, y_pred_lin_3, alpha=0.5, edgecolor="k")
+plt.plot(
+    [y_test_3.min(), y_test_3.max()],
+    [y_test_3.min(), y_test_3.max()],
+    color="red",
+    linewidth=2,
+    label="Perfect Prediction",
+)
+
+plt.xlabel("Actual Salary (USD)")
+plt.ylabel("Predicted Salary (USD)")
+plt.title(f"Linear Regression: Predicted vs Actual (R² = {r2:.3f})")
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+    Linear Regression → RMSE: 35368.52, R²: 0.634
+
+
+
+![png](final_files/final_63_1.png)
+
+
+##### Feature Coefficent
+
+
+```python
+# ========================
+# 7. Aggregate feature importances by original feature (LinearRegression)
+# ========================
+
+# Get coefficients from LinearRegression
+linreg_coefs_3 = models_3["LinearRegression"].coef_
+
+# Use same OHE feature names as before
+ohe_3 = preprocessor_3.named_transformers_["cat"]
+ohe_features_3 = ohe_3.get_feature_names_out(categorical_cols_3)
+all_features_3 = list(ohe_features_3) + numeric_cols_3
+
+
+# Map back to original columns
+def map_to_original(feature_name):
+    for col_3 in categorical_cols_3:
+        if feature_name.startswith(col_3 + "_"):
+            return col_3
+    if feature_name in numeric_cols_3:
+        return feature_name
+    return feature_name
+
+
+original_features_3 = [map_to_original(f_3) for f_3 in all_features_3]
+
+# Aggregate absolute coefficients as importance
+feature_importance_salaries_data_frame_3 = (
+    pd.DataFrame({"feature": original_features_3, "importance": abs(linreg_coefs_3)})
+    .groupby("feature")
+    .sum()
+    .sort_values(by="importance", ascending=False)
+    .reset_index()
+)
+
+print("\n=== Aggregated Feature Importances (LinearRegression coefficients) ===")
+print(feature_importance_salaries_data_frame_3)
+```
+
+
+    === Aggregated Feature Importances (LinearRegression coefficients) ===
+                  feature     importance
+    0  employee_residence  881968.462912
+    1    company_location  820034.549297
+    2    experience_level  118230.637728
+    3           job_title   63336.200112
+    4           work_year    5565.467702
+
+
+
+```python
+# ========================
+# 8. Visualize aggregated feature importances
+# ========================
+plt.figure(figsize=(8, 5))
+sns.barplot(x="importance", y="feature", data=feature_importance_salaries_data_frame_3)
+plt.title("Aggregated Feature Importances (LinearRegression Coefficients)")
+plt.xlabel("Importance (absolute coefficient)")
+plt.ylabel("Feature")
+plt.tight_layout()
+plt.show()
+```
+
+
+![png](final_files/final_66_0.png)
 
 
 ### Group Employees by Job Title, Experience Level, Employee Residence, Company Location
@@ -1813,7 +1947,7 @@ print(grouped.to_string(index=False, line_width=10000))
                Data Scientist               EN                 US               DE      1        0.10      50000.0        50000.0
 
 
-    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_67267/3461952642.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+    /var/folders/jh/z981c7zj0vz0gmyfc8mhdxdr0000gn/T/ipykernel_6856/3461952642.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
       salaries_data_frame.groupby(
 
 
@@ -1894,7 +2028,7 @@ print(new_samples.to_string(index=False, line_width=10000))
 ```
 
      work_year experience_level employment_type      job_title employee_residence company_location company_size  remote_ratio   salary salary_currency  salary_in_usd  predicted_salary_usd  error_percentage       comment
-          2023               SE              FT Data Scientist                 US               US            M           100 160000.0             USD       160000.0             167389.26              4.62  ✅ Acceptable
-          2023               MI              FT  Data Engineer                 GB               GB            L            50  82528.0             USD        82528.0              87356.71              5.85  ✅ Acceptable
-          2023               EN              FT   Data Analyst                 BR               BR            S             0   8000.0             USD         8000.0             -14442.74           -280.53 ⚠️ High Error
+          2023               SE              FT Data Scientist                 US               US            M           100 160000.0             USD       160000.0             166271.88              3.92  ✅ Acceptable
+          2023               MI              FT  Data Engineer                 GB               GB            L            50  82528.0             USD        82528.0              86858.68              5.25  ✅ Acceptable
+          2023               EN              FT   Data Analyst                 BR               BR            S             0   8000.0             USD         8000.0             -13262.27           -265.78 ⚠️ High Error
 
