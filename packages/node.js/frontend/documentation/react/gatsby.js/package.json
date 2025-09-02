@@ -41,7 +41,7 @@
     "@types/react-scroll": "1.8.10",
     "@types/react-stickynode": "4.0.3",
     "autoprefixer": "10.4.21",
-    "daisyui": "5.0.54",
+    "daisyui": "5.1.5",
     "eslint": "9.34.0",
     "eslint-plugin-react": "7.37.5",
     "gatsby-plugin-postcss": "6.15.0",
@@ -61,7 +61,7 @@
     "ts-jest": "29.4.1",
     "ts-node": "10.9.2",
     "typescript": "5.9.2",
-    "typescript-eslint": "8.41.0"
+    "typescript-eslint": "8.42.0"
   },
   "keywords": [
     "gatsby"
