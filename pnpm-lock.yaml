@@ -19,7 +19,7 @@ overrides:
   send: 1.2.0
   serve-static: 2.2.0
   tar: 7.4.3
-  webpack-dev-middleware: 7.4.2
+  webpack-dev-middleware: 7.4.3
 
 importers:
 
@@ -14049,8 +14049,8 @@ packages:
       webpack-dev-server:
         optional: true
 
-  webpack-dev-middleware@7.4.2:
-    resolution: {integrity: sha512-xOO8n6eggxnwYpy1NlzUKpvrjfJTvae5/D6WOK0S2LSo7vjmo5gCM1DbLUmFqrMTJP+W/0YZNctm7jasWvLuBA==}
+  webpack-dev-middleware@7.4.3:
+    resolution: {integrity: sha512-5kA/PzpZzDz5mNOkcNLmU1UdjGeSSxd7rt1akWpI70jMNHLASiBPRaQZn0hgyhvhawfIwSnnLfDABIxL3ueyFg==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       webpack: ^5.0.0
@@ -31413,22 +31413,22 @@ snapshots:
       webpack: 5.101.3(webpack-cli@6.0.1)
       webpack-merge: 6.0.1
 
-  webpack-dev-middleware@7.4.2(webpack@5.101.0):
+  webpack-dev-middleware@7.4.3(webpack@5.101.0):
     dependencies:
       colorette: 2.0.20
       memfs: 4.36.0
-      mime-types: 2.1.35
+      mime-types: 3.0.1
       on-finished: 2.4.1
       range-parser: 1.2.1
       schema-utils: 4.3.2
     optionalDependencies:
       webpack: 5.101.0
 
-  webpack-dev-middleware@7.4.2(webpack@5.101.3):
+  webpack-dev-middleware@7.4.3(webpack@5.101.3):
     dependencies:
       colorette: 2.0.20
       memfs: 4.36.0
-      mime-types: 2.1.35
+      mime-types: 3.0.1
       on-finished: 2.4.1
       range-parser: 1.2.1
       schema-utils: 4.3.2
@@ -31465,7 +31465,7 @@ snapshots:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 7.4.2(webpack@5.101.0)
+      webpack-dev-middleware: 7.4.3(webpack@5.101.0)
       ws: 8.18.3
     optionalDependencies:
       webpack: 5.101.0
@@ -31503,7 +31503,7 @@ snapshots:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 7.4.2(webpack@5.101.3)
+      webpack-dev-middleware: 7.4.3(webpack@5.101.3)
       ws: 8.18.3
     optionalDependencies:
       webpack: 5.101.3(webpack-cli@6.0.1)
