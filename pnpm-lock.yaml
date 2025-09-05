@@ -124,8 +124,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1(encoding@0.1.13)
       uuid:
-        specifier: 11.1.0
-        version: 11.1.0
+        specifier: 12.0.0
+        version: 12.0.0
       vinxi:
         specifier: 0.5.8
         version: 0.5.8(@azure/identity@4.10.2)(@netlify/blobs@9.1.2)(@types/node@24.3.1)(db0@0.3.2)(encoding@0.1.13)(idb-keyval@6.2.2)(ioredis@5.7.0)(jiti@2.5.1)(less@4.2.2)(lightningcss@1.30.1)(sass@1.85.0)(terser@5.43.1)(xml2js@0.6.2)(yaml@2.8.1)
@@ -13724,6 +13724,10 @@ packages:
 
   uuid@11.1.0:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
+  uuid@12.0.0:
+    resolution: {integrity: sha512-USe1zesMYh4fjCA8ZH5+X5WIVD0J4V1Jksm1bFTVBX2F/cwSXt0RO5w/3UXbdLKmZX65MiWV+hwhSS8p6oBTGA==}
     hasBin: true
 
   uuid@3.4.0:
@@ -31008,6 +31012,8 @@ snapshots:
       base64-arraybuffer: 1.0.2
 
   uuid@11.1.0: {}
+
+  uuid@12.0.0: {}
 
   uuid@3.4.0: {}
 
