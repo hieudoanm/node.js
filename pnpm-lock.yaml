@@ -11,7 +11,7 @@ overrides:
   cross-spawn: 7.0.6
   debug: 4.4.3
   express: 5.1.0
-  got: 14.4.8
+  got: 14.4.9
   marked: 16.3.0
   nanoid: 5.1.5
   postcss: 8.5.6
@@ -8254,8 +8254,8 @@ packages:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
 
-  got@14.4.8:
-    resolution: {integrity: sha512-vxwU4HuR0BIl+zcT1LYrgBjM+IJjNElOjCzs0aPgHorQyr/V6H6Y73Sn3r3FOlUffvWD+Q5jtRuGWaXkU8Jbhg==}
+  got@14.4.9:
+    resolution: {integrity: sha512-Dbu075Jwm3QwNCIoCenqkqY8l2gd7e/TanuhMbzZIEsb1mpAneImSusKhZ+XdqqC3S91SDV/1SdWpGXKAlm8tA==}
     engines: {node: '>=20'}
 
   graceful-fs@4.2.10:
@@ -24550,7 +24550,7 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  got@14.4.8:
+  got@14.4.9:
     dependencies:
       '@sindresorhus/is': 7.0.2
       '@szmarczak/http-timer': 5.0.1
@@ -28005,14 +28005,14 @@ snapshots:
 
   package-json@6.5.0:
     dependencies:
-      got: 14.4.8
+      got: 14.4.9
       registry-auth-token: 4.2.2
       registry-url: 5.1.0
       semver: 7.7.2
 
   package-json@8.1.1:
     dependencies:
-      got: 14.4.8
+      got: 14.4.9
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
       semver: 7.7.2
@@ -28987,7 +28987,7 @@ snapshots:
   public-ip@7.0.1:
     dependencies:
       dns-socket: 4.2.2
-      got: 14.4.8
+      got: 14.4.9
       is-ip: 5.0.1
 
   pump@3.0.3:
