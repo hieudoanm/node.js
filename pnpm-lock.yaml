@@ -236,8 +236,8 @@ importers:
   packages/node.js/frontend/documentation/astro:
     dependencies:
       '@astrojs/starlight':
-        specifier: 0.35.3
-        version: 0.35.3(astro@5.13.8(@azure/identity@4.10.2)(@netlify/blobs@9.1.2)(@types/node@24.5.2)(db0@0.3.2)(encoding@0.1.13)(idb-keyval@6.2.2)(ioredis@5.7.0)(jiti@2.5.1)(less@4.2.2)(lightningcss@1.30.1)(rollup@4.46.2)(sass@1.85.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.8.1))
+        specifier: 0.36.0
+        version: 0.36.0(astro@5.13.8(@azure/identity@4.10.2)(@netlify/blobs@9.1.2)(@types/node@24.5.2)(db0@0.3.2)(encoding@0.1.13)(idb-keyval@6.2.2)(ioredis@5.7.0)(jiti@2.5.1)(less@4.2.2)(lightningcss@1.30.1)(rollup@4.46.2)(sass@1.85.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.8.1))
       astro:
         specifier: 5.13.8
         version: 5.13.8(@azure/identity@4.10.2)(@netlify/blobs@9.1.2)(@types/node@24.5.2)(db0@0.3.2)(encoding@0.1.13)(idb-keyval@6.2.2)(ioredis@5.7.0)(jiti@2.5.1)(less@4.2.2)(lightningcss@1.30.1)(rollup@4.46.2)(sass@1.85.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.8.1)
@@ -872,8 +872,8 @@ packages:
   '@astrojs/sitemap@3.4.2':
     resolution: {integrity: sha512-wfN2dZzdkto6yaMtOFa/J9gc60YE3wl3rgSBoNJ+MU3lJVUMsDY9xf9uAVi8Mp/zEQKFDSJlQzBvqQUpw0Hf6g==}
 
-  '@astrojs/starlight@0.35.3':
-    resolution: {integrity: sha512-z9MbODjZl/STU3PPU18iOTkLObJBw7PA8xMe5s+KPscQGL0LNZyQUYeClG+F1/em/k+2AsokGpVPta+aOTk1sg==}
+  '@astrojs/starlight@0.36.0':
+    resolution: {integrity: sha512-aVJVBfvFuE2avsMDhmRzn6I5GjDhUwIQFlu3qH9a1C0fNsPYDw2asxHQODAD7EfGiKGvvHCJgHb+9jbJ8lCfNQ==}
     peerDependencies:
       astro: ^5.5.0
 
@@ -15039,7 +15039,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  '@astrojs/starlight@0.35.3(astro@5.13.8(@azure/identity@4.10.2)(@netlify/blobs@9.1.2)(@types/node@24.5.2)(db0@0.3.2)(encoding@0.1.13)(idb-keyval@6.2.2)(ioredis@5.7.0)(jiti@2.5.1)(less@4.2.2)(lightningcss@1.30.1)(rollup@4.46.2)(sass@1.85.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.8.1))':
+  '@astrojs/starlight@0.36.0(astro@5.13.8(@azure/identity@4.10.2)(@netlify/blobs@9.1.2)(@types/node@24.5.2)(db0@0.3.2)(encoding@0.1.13)(idb-keyval@6.2.2)(ioredis@5.7.0)(jiti@2.5.1)(less@4.2.2)(lightningcss@1.30.1)(rollup@4.46.2)(sass@1.85.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.6
       '@astrojs/mdx': 4.3.3(astro@5.13.8(@azure/identity@4.10.2)(@netlify/blobs@9.1.2)(@types/node@24.5.2)(db0@0.3.2)(encoding@0.1.13)(idb-keyval@6.2.2)(ioredis@5.7.0)(jiti@2.5.1)(less@4.2.2)(lightningcss@1.30.1)(rollup@4.46.2)(sass@1.85.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.8.1))
