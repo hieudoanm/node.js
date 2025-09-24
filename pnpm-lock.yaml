@@ -19,7 +19,7 @@ overrides:
   send: 1.2.0
   serve-static: 2.2.0
   tar: 7.4.4
-  webpack-dev-middleware: 7.4.3
+  webpack-dev-middleware: 7.4.4
 
 importers:
 
@@ -14254,8 +14254,8 @@ packages:
       webpack-dev-server:
         optional: true
 
-  webpack-dev-middleware@7.4.3:
-    resolution: {integrity: sha512-5kA/PzpZzDz5mNOkcNLmU1UdjGeSSxd7rt1akWpI70jMNHLASiBPRaQZn0hgyhvhawfIwSnnLfDABIxL3ueyFg==}
+  webpack-dev-middleware@7.4.4:
+    resolution: {integrity: sha512-MMERxBs7QRSrquqjvExZ3GtTJc3r/yWASgiOCMnvXB4jdfEN/Jb9p68KzD6zku3+BViaG8cA+CiRkADFFaDCfw==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       webpack: ^5.0.0
@@ -21447,12 +21447,12 @@ snapshots:
   '@webpack-cli/configtest@3.0.1(webpack-cli@6.0.1)(webpack@5.101.3)':
     dependencies:
       webpack: 5.101.3(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.101.3)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.3)
 
   '@webpack-cli/generators@3.0.7(encoding@0.1.13)(mem-fs@2.3.0)(prettier@3.6.2)(webpack-cli@6.0.1)(webpack@5.101.3)':
     dependencies:
       webpack: 5.101.3(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.101.3)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.3)
       yeoman-environment: 3.19.3
       yeoman-generator: 5.10.0(encoding@0.1.13)(mem-fs@2.3.0)(yeoman-environment@3.19.3)
     optionalDependencies:
@@ -21466,7 +21466,7 @@ snapshots:
   '@webpack-cli/info@3.0.1(webpack-cli@6.0.1)(webpack@5.101.3)':
     dependencies:
       webpack: 5.101.3(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.101.3)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.3)
 
   '@webpack-cli/serve@3.0.1(webpack-cli@6.0.1)(webpack-dev-server@5.2.2)(webpack@5.101.3)':
     dependencies:
@@ -31782,7 +31782,7 @@ snapshots:
       webpack: 5.101.3(webpack-cli@6.0.1)
       webpack-merge: 6.0.1
 
-  webpack-dev-middleware@7.4.3(webpack@5.101.0):
+  webpack-dev-middleware@7.4.4(webpack@5.101.0):
     dependencies:
       colorette: 2.0.20
       memfs: 4.36.0
@@ -31793,7 +31793,7 @@ snapshots:
     optionalDependencies:
       webpack: 5.101.0
 
-  webpack-dev-middleware@7.4.3(webpack@5.101.3):
+  webpack-dev-middleware@7.4.4(webpack@5.101.3):
     dependencies:
       colorette: 2.0.20
       memfs: 4.36.0
@@ -31834,7 +31834,7 @@ snapshots:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 7.4.3(webpack@5.101.0)
+      webpack-dev-middleware: 7.4.4(webpack@5.101.0)
       ws: 8.18.3
     optionalDependencies:
       webpack: 5.101.0
@@ -31872,7 +31872,7 @@ snapshots:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 7.4.3(webpack@5.101.3)
+      webpack-dev-middleware: 7.4.4(webpack@5.101.3)
       ws: 8.18.3
     optionalDependencies:
       webpack: 5.101.3(webpack-cli@6.0.1)
@@ -31959,7 +31959,7 @@ snapshots:
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     optionalDependencies:
-      webpack-cli: 6.0.1(webpack@5.101.3)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.3)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
