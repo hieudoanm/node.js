@@ -358,8 +358,8 @@ importers:
         specifier: 2.12.6
         version: 2.12.6(graphql@16.11.0)
       pino:
-        specifier: 9.13.1
-        version: 9.13.1
+        specifier: 10.0.0
+        version: 10.0.0
     devDependencies:
       '@eslint/js':
         specifier: 9.36.0
@@ -464,8 +464,8 @@ importers:
         specifier: 0.2.20
         version: 0.2.20
       pino:
-        specifier: 9.13.1
-        version: 9.13.1
+        specifier: 10.0.0
+        version: 10.0.0
       pino-pretty:
         specifier: 13.1.1
         version: 13.1.1
@@ -11099,8 +11099,8 @@ packages:
   pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
 
-  pino@9.13.1:
-    resolution: {integrity: sha512-Szuj+ViDTjKPQYiKumGmEn3frdl+ZPSdosHyt9SnUevFosOkMY2b7ipxlEctNKPmMD/VibeBI+ZcZCJK+4DPuw==}
+  pino@10.0.0:
+    resolution: {integrity: sha512-eI9pKwWEix40kfvSzqEP6ldqOoBIN7dwD/o91TY5z8vQI12sAffpR/pOqAD1IVVwIVHDpHjkq0joBPdJD0rafA==}
     hasBin: true
 
   pirates@4.0.7:
@@ -21486,12 +21486,12 @@ snapshots:
   '@webpack-cli/configtest@3.0.1(webpack-cli@6.0.1)(webpack@5.102.0)':
     dependencies:
       webpack: 5.102.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.102.0)
+      webpack-cli: 6.0.1(webpack@5.102.0)
 
   '@webpack-cli/generators@3.0.7(encoding@0.1.13)(mem-fs@2.3.0)(prettier@3.6.2)(webpack-cli@6.0.1)(webpack@5.102.0)':
     dependencies:
       webpack: 5.102.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.102.0)
+      webpack-cli: 6.0.1(webpack@5.102.0)
       yeoman-environment: 3.19.3
       yeoman-generator: 5.10.0(encoding@0.1.13)(mem-fs@2.3.0)(yeoman-environment@3.19.3)
     optionalDependencies:
@@ -21505,7 +21505,7 @@ snapshots:
   '@webpack-cli/info@3.0.1(webpack-cli@6.0.1)(webpack@5.102.0)':
     dependencies:
       webpack: 5.102.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.102.0)
+      webpack-cli: 6.0.1(webpack@5.102.0)
 
   '@webpack-cli/serve@3.0.1(webpack-cli@6.0.1)(webpack-dev-server@5.2.2)(webpack@5.102.0)':
     dependencies:
@@ -28355,7 +28355,7 @@ snapshots:
 
   pino-std-serializers@7.0.0: {}
 
-  pino@9.13.1:
+  pino@10.0.0:
     dependencies:
       atomic-sleep: 1.0.0
       on-exit-leak-free: 2.1.2
@@ -32014,7 +32014,7 @@ snapshots:
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     optionalDependencies:
-      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.102.0)
+      webpack-cli: 6.0.1(webpack@5.102.0)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
