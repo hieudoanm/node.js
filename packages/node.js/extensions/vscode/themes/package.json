@@ -15,7 +15,7 @@
   ],
   "author": "hieudoanm <hieumdoan@gmail.com> (https://hieudoanm.github.io)",
   "license": "GPL-3.0",
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.18.0",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/hieudoanm/hieudoanm.github.io.git"
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/hieudoanm/hieudoanm.github.io#readme",
   "engines": {
     "node": "24.9.0",
-    "vscode": "1.104.2"
+    "vscode": "1.104.3"
   },
   "scripts": {
     "format": "prettier --cache --write .",
