@@ -50,8 +50,8 @@ importers:
         specifier: 6.4.1
         version: 6.4.1(encoding@0.1.13)(graphql@16.11.0)
       '@apollo/server':
-        specifier: 5.0.0
-        version: 5.0.0(graphql@16.11.0)
+        specifier: 5.1.0
+        version: 5.1.0(graphql@16.11.0)
       '@graphql-tools/schema':
         specifier: 10.0.25
         version: 10.0.25(graphql@16.11.0)
@@ -267,8 +267,8 @@ packages:
     peerDependencies:
       graphql: 14.x || 15.x || 16.x
 
-  '@apollo/server@5.0.0':
-    resolution: {integrity: sha512-PHopOm7pr69k7eDJvCBU4cZy9Z19qyCFKB9/luLnf2YCatu2WOYhoQPNr3dAoe//xv0RZFhxXbRcnK6IXIP7Nw==}
+  '@apollo/server@5.1.0':
+    resolution: {integrity: sha512-azqwwmKp23TMFQkjE66622sdY2Ao9d+LrebW++b3rFCNxU6XAl/vRwInOh9ejNgShDQzVS+bdCIFQnH9+r+N1A==}
     engines: {node: '>=20'}
     peerDependencies:
       graphql: ^16.11.0
@@ -4629,10 +4629,6 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lru-cache@11.1.0:
-    resolution: {integrity: sha512-QIXZUBJUx+2zHUdQujWejBkcD9+cs94tLn0+YL8UrCh+D5sCXZ4c7LaEH48pNwRY3MLDgqUFyhlCyjJPf1WP0A==}
-    engines: {node: 20 || >=22}
-
   lru-cache@11.2.2:
     resolution: {integrity: sha512-F9ODfyqML2coTIsQpSkRHnLSZMtkU8Q+mSfcaIyKwy58u+8k5nvAYeiNhsyMARvzNcXJ9QfWVrcPsC9e9rAxtg==}
     engines: {node: 20 || >=22}
@@ -7049,7 +7045,7 @@ snapshots:
       '@apollo/utils.logger': 3.0.0
       graphql: 16.11.0
 
-  '@apollo/server@5.0.0(graphql@16.11.0)':
+  '@apollo/server@5.1.0(graphql@16.11.0)':
     dependencies:
       '@apollo/cache-control-types': 1.0.3(graphql@16.11.0)
       '@apollo/server-gateway-interface': 2.0.0(graphql@16.11.0)
@@ -7068,7 +7064,7 @@ snapshots:
       finalhandler: 2.1.0
       graphql: 16.11.0
       loglevel: 1.9.2
-      lru-cache: 11.1.0
+      lru-cache: 11.2.2
       negotiator: 1.0.0
       uuid: 11.1.0
       whatwg-mimetype: 4.0.0
@@ -7100,7 +7096,7 @@ snapshots:
   '@apollo/utils.keyvaluecache@4.0.0':
     dependencies:
       '@apollo/utils.logger': 3.0.0
-      lru-cache: 11.1.0
+      lru-cache: 11.2.2
 
   '@apollo/utils.logger@3.0.0': {}
 
@@ -7163,7 +7159,7 @@ snapshots:
       '@csstools/css-color-parser': 3.0.10(@csstools/css-parser-algorithms@3.0.5(@csstools/css-tokenizer@3.0.4))(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-tokenizer': 3.0.4
-      lru-cache: 11.1.0
+      lru-cache: 11.2.2
 
   '@asamuzakjp/dom-selector@6.7.2':
     dependencies:
@@ -12283,8 +12279,6 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lru-cache@11.1.0: {}
-
   lru-cache@11.2.2: {}
 
   lru-cache@5.1.1:
@@ -13130,7 +13124,7 @@ snapshots:
 
   path-scurry@2.0.0:
     dependencies:
-      lru-cache: 11.1.0
+      lru-cache: 11.2.2
       minipass: 7.1.2
 
   path-to-regexp@8.2.0: {}
